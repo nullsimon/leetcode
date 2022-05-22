@@ -34,7 +34,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	var l3 *ListNode
 	overFlow := 0
-	for l1 != nil || l2 != nil {
+	for l1 != nil || l2 != nil || overFlow > 0 {
 		l := new(ListNode)
 		val := 0
 		if l1 != nil {
@@ -62,12 +62,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		if l2 != nil {
 			l2 = l2.Next
 		}
-	}
-	if overFlow > 0 {
-		l := new(ListNode)
-		l.Val = overFlow
-		l.Next = l3
-		l3 = l
 	}
 	return reverse(l3)
 
