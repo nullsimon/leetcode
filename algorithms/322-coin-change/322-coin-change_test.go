@@ -6,9 +6,9 @@ import (
 
 func TestCoinChange(t *testing.T) {
 
-	var coins = []int{186, 419, 83, 408}
-	var amount = 6249
-	var want = 20
+	var coins = []int{3, 5, 1}
+	var amount = 11
+	var want = 3
 	got := coinChange(coins, amount)
 	if got != want {
 		t.Fatalf(`coinChange func failed: want %d, got %d`, want, got)
