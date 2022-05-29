@@ -5,10 +5,10 @@ import "math"
 func coinChange(coins []int, amount int) int {
 
 	var dpMaps = make(map[int]int)
-	return dp(coins, amount, dpMaps)
+	return dp(coins, amount, &dpMaps)
 }
 
-func dp(coins []int, n int, dpMaps map[int]int) int {
+func dp(coins []int, n int, dpMaps *map[int]int) int {
 
 	if n == 0 {
 		return 0
@@ -17,8 +17,8 @@ func dp(coins []int, n int, dpMaps map[int]int) int {
 		return -1
 	}
 
-	if dpMaps[n] > 0 {
-		return dpMaps[n]
+	if (*dpMaps)[n] > 0 {
+		return (*dpMaps)[n]
 	}
 
 	res := math.MaxInt32 - 1
@@ -33,7 +33,7 @@ func dp(coins []int, n int, dpMaps map[int]int) int {
 	if res == math.MaxInt32-1 {
 		return -1
 	}
-	dpMaps[n] = res
+	(*dpMaps)[n] = res
 	return res
 
 }
