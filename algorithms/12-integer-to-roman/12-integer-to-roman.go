@@ -51,6 +51,10 @@ func intToRoman(num int) string {
 	return res
 }
 
+/*
+* sequence or map, or tree. so just using a hard map, if neccesarry
+ */
+
 func intToRomanHardCode(num int) string {
 
 	var ints = []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
