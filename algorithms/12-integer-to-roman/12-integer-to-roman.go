@@ -4,7 +4,7 @@ package integertoroman
 * intToRoman Tips
 * 1 using int slice to ordered map
 * 2 there are different nunmber, 4 in a row should go up, 9 should go up--should ignore 5
-*
+* 3 more generaly, we should use I X C to figure 4 or 9, that would be good
  */
 func intToRoman(num int) string {
 	var intRomans = map[int]string{
@@ -48,5 +48,24 @@ func intToRoman(num int) string {
 			}
 		}
 	}
+	return res
+}
+
+func intToRomanHardCode(num int) string {
+
+	var ints = []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+	var romans = []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+
+	res := ""
+
+	for i := 0; i < len(ints); i++ {
+		cnt := num / ints[i]
+		num = num % ints[i]
+
+		for ; cnt > 0; cnt-- {
+			res += romans[i]
+		}
+	}
+
 	return res
 }
