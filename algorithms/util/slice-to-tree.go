@@ -28,6 +28,7 @@ func sliceToTree(s []int) *TreeNode {
 	return root
 }
 
+//copy from https://github.com/TonyDoen/go_code_review/blob/c670bbfcd3166de8fba423513bb6c56be86ce4ef/hi-offer/structure/Tree_test.go
 func ReConstructBinaryTree(pre, in []int) *TreeNode {
 	if nil == pre || nil == in {
 		return nil
