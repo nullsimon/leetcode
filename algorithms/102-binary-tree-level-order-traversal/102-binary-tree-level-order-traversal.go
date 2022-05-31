@@ -18,7 +18,8 @@ func levelOrder(root *TreeNode) [][]int {
 	var treeQueue [](*TreeNode)
 	treeQueue = append(treeQueue, root)
 	var leverTreeSlice [][]int
-	for size := len(treeQueue); size > 0; {
+	for len(treeQueue) > 0 {
+		var size = len(treeQueue)
 		var treeSlice []int
 		for i := 0; i < size; i++ {
 			//deque enque
