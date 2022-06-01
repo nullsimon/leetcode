@@ -24,7 +24,8 @@ func networkBecomesIdle(edges [][]int, patience []int) int {
 				edge := edges[i]
 				if edge[0] == cur.ID {
 					//avoid circle, but if circle more closed ?
-					if visted[edge[1]] {
+					_, ok := visted[edge[1]]
+					if ok {
 						continue
 					} else {
 						visted[edge[1]] = true
@@ -32,11 +33,9 @@ func networkBecomesIdle(edges [][]int, patience []int) int {
 					node := new(Node)
 					node.ID = edge[1]
 					fmt.Println(depth)
-					second := depth*2 + 1
-					rest := depth * 2 / patience[edge[1]]
-					if rest > 1 {
-						second = second + rest - 1
-					}
+					second := depth * 2
+					rest := (second - 1) / patience[edge[1]] * patience[edge[1]]
+					second += rest
 
 					if second > seconds {
 						seconds = second
@@ -49,5 +48,5 @@ func networkBecomesIdle(edges [][]int, patience []int) int {
 		depth++
 	}
 
-	return seconds
+	return seconds + 1
 }
