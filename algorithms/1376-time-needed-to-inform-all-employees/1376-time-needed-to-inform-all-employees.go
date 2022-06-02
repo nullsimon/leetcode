@@ -1,7 +1,9 @@
 package timeneededtoinformallemployees
 
+import "fmt"
+
 func numOfMinutes(n int, headID int, manager []int, informTime []int) int {
-	return numOfMinutes_version4(n, headID, manager, informTime)
+	return numOfMinutes_version6(n, headID, manager, informTime)
 }
 
 // time limit max, faield 28715
@@ -134,6 +136,69 @@ func numOfMinutes_version4(n int, headID int, manager []int, informTime []int) i
 		}
 		m = nm
 		nm = make(map[int]bool)
+	}
+	return res
+}
+
+type Node struct {
+	Val        int
+	informTime int
+	Children   []*Node
+}
+
+func numOfMinutes_version6(n int, headID int, manager []int, informTime []int) int {
+	if n == 1 {
+		return 0
+	}
+	root := new(Node)
+	root.Val = headID
+	root.informTime = informTime[headID]
+	existed := make(map[int]*Node)
+	existed[headID] = root
+
+	for i := 0; i < len(manager); i++ {
+		if i == headID {
+			continue
+		}
+
+		node, ok := existed[i]
+		fmt.Println(i, ok)
+		if !ok {
+			node = new(Node)
+			node.Val = i
+			node.informTime = informTime[i]
+			existed[i] = node
+		}
+		n, ok := existed[manager[i]]
+		if ok {
+			//manager node exists, append to it
+			n.Children = append(n.Children, node)
+		} else {
+			nl := new(Node)
+			nl.Val = manager[i]
+			nl.informTime = informTime[manager[i]]
+			nl.Children = append(nl.Children, node)
+			existed[manager[i]] = nl
+		}
+	}
+
+	var dist [100000]int
+	dist[headID] = informTime[headID]
+	var res = 0
+	var ch = make(chan *Node, 100000)
+	ch <- root
+	for len(ch) > 0 {
+		for i := 0; i < len(ch); i++ {
+			cur := <-ch
+			for j := 0; j < len(cur.Children); j++ {
+				c := cur.Children[j]
+				ch <- c
+				dist[c.Val] = dist[cur.Val] + c.informTime
+				if dist[c.Val] > res {
+					res = dist[c.Val]
+				}
+			}
+		}
 	}
 	return res
 }
