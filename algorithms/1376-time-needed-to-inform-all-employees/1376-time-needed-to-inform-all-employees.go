@@ -1,7 +1,5 @@
 package timeneededtoinformallemployees
 
-import "fmt"
-
 func numOfMinutes(n int, headID int, manager []int, informTime []int) int {
 	return numOfMinutes_version6(n, headID, manager, informTime)
 }
@@ -162,7 +160,6 @@ func numOfMinutes_version6(n int, headID int, manager []int, informTime []int) i
 		}
 
 		node, ok := existed[i]
-		fmt.Println(i, ok)
 		if !ok {
 			node = new(Node)
 			node.Val = i
