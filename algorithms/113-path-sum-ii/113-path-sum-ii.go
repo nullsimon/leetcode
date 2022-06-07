@@ -48,12 +48,12 @@ func pathSum(root *TreeNode, targetSum int) [][]int {
 			if cur.Left != nil {
 				ch <- cur.Left
 				distCh <- curSum
-				distSlice <- curSlice
+				distSlice <- resSlice
 			}
 			if cur.Right != nil {
 				ch <- cur.Right
 				distCh <- curSum
-				distSlice <- curSlice
+				distSlice <- resSlice
 			}
 		}
 	}
