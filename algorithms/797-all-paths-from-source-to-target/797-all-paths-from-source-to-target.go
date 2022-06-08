@@ -25,3 +25,32 @@ func traverse(graph [][]int, s int, path []int, res *([][]int)) {
 		traverse(graph, graph[s][i], resPath, res)
 	}
 }
+
+func allPathsSourceTarget_BFS(graph [][]int) [][]int {
+	if graph == nil {
+		return nil
+	}
+	var ch = make(chan int, 225)
+	var pathCh = make(chan []int, 225)
+	var res [][]int
+	ch <- 0
+	pathCh <- []int{}
+	for len(ch) > 0 {
+		for i := 0; i < len(ch); i++ {
+			cur := <-ch
+			parents := <-pathCh
+
+			curPath := append(parents, cur)
+			var resPath = make([]int, len(curPath))
+			copy(resPath, curPath)
+			if len(graph[cur]) == 0 {
+				res = append(res, resPath)
+			}
+			for j := 0; j < len(graph[cur]); j++ {
+				ch <- graph[cur][j]
+				pathCh <- resPath
+			}
+		}
+	}
+	return res
+}
