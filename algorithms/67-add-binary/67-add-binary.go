@@ -14,6 +14,8 @@ func addBinary(a string, b string) string {
 				overflow = 1
 				ch <- "0"
 			} else {
+				overflow = 0
+
 				ch <- fmt.Sprint(num)
 			}
 			j--
@@ -24,6 +26,8 @@ func addBinary(a string, b string) string {
 				overflow = 1
 				ch <- "0"
 			} else {
+				overflow = 0
+
 				ch <- fmt.Sprint(num)
 			}
 			i--
@@ -32,7 +36,12 @@ func addBinary(a string, b string) string {
 			if num == 2 {
 				overflow = 1
 				ch <- "0"
+			} else if num == 3 {
+				overflow = 1
+				ch <- "1"
 			} else {
+				overflow = 0
+
 				ch <- fmt.Sprint(num)
 			}
 
