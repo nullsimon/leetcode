@@ -9,18 +9,15 @@ func strStr(haystack string, needle string) int {
 			}
 			not := false
 			for j := 0; j < len(needle); j++ {
-
 				if haystack[i+j] != needle[j] {
 					not = true
 					break
 				}
-
 			}
 			if not {
 				continue
 			} else {
 				return i
-
 			}
 		}
 	}
