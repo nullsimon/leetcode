@@ -14,7 +14,7 @@ func TestThreeSum(t *testing.T) {
 		{{-1, 0, 1}, {-1, -1, 2}},
 	}
 	for i := range input {
-		got := threeSum1(input[i])
+		got := threeSum2(input[i])
 		for k := range want[i] {
 			sort.Ints(want[i][k])
 			sort.Ints(got[k])

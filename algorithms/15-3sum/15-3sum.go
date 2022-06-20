@@ -54,6 +54,26 @@ func threeSum1(nums []int) [][]int {
 
 }
 
+func threeSum2(nums []int) [][]int {
+	var res [][]int
+	sort.Ints(nums)
+	for i := 0; i < len(nums); i++ {
+		target := 0 - nums[i]
+		res1 := twoSum(nums[i+1:], target)
+		for j := range res1 {
+			res1[j] = append(res1[j], nums[i])
+			res = append(res, res1[j])
+		}
+		// remove dup
+		for i < len(nums)-1 && nums[i] == nums[i+1] {
+			i++
+		}
+
+	}
+	return res
+
+}
+
 func twoSum(nums []int, target int) [][]int {
 
 	var m = make(map[int]int)
