@@ -28,3 +28,44 @@ func threeSum(nums []int) [][]int {
 	}
 	return res
 }
+
+func threeSum1(nums []int) [][]int {
+	var res [][]int
+	var hisMap = make(map[[3]int]bool)
+	sort.Ints(nums)
+	for i := 0; i < len(nums); i++ {
+		target := 0 - nums[i]
+		res1 := twoSum(nums[i+1:], target)
+		for j := range res1 {
+			res1[j] = append(res1[j], nums[i])
+			sort.Ints(res1[j])
+			var values [3]int
+			for k := 0; k < 3; k++ {
+				values[k] = res1[j][k]
+			}
+			if _, ok := hisMap[values]; !ok {
+				res = append(res, res1[j])
+				hisMap[values] = true
+			}
+		}
+
+	}
+	return res
+
+}
+
+func twoSum(nums []int, target int) [][]int {
+
+	var m = make(map[int]int)
+	var res [][]int
+
+	for _, num := range nums {
+		if _, ok := m[num]; ok {
+			res1 := []int{num, m[num]}
+			res = append(res, res1)
+		}
+		m[target-num] = num
+	}
+
+	return res
+}

@@ -2,6 +2,7 @@ package threesum
 
 import (
 	"reflect"
+	"sort"
 	"testing"
 )
 
@@ -10,10 +11,14 @@ func TestThreeSum(t *testing.T) {
 		{-1, 0, 1, 2, -1, -4},
 	}
 	want := [][][]int{
-		{{-1, -1, 2}, {-1, 0, 1}},
+		{{-1, 0, 1}, {-1, -1, 2}},
 	}
 	for i := range input {
-		got := threeSum(input[i])
+		got := threeSum1(input[i])
+		for k := range want[i] {
+			sort.Ints(want[i][k])
+			sort.Ints(got[k])
+		}
 		if !reflect.DeepEqual(got, want[i]) {
 			t.Fatalf(`threeSum function failed, want %v, got %v.`, want[i], got)
 		}
