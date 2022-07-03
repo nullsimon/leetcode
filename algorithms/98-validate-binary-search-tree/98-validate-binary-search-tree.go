@@ -27,6 +27,13 @@ func isValidBST(root *TreeNode) bool {
 	return true
 }
 
+func isValidBST2(root *TreeNode, min *TreeNode, max *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	if min != nil && root.Val < 
+}
+
 func traverse(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
