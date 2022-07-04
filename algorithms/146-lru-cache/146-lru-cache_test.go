@@ -1,8 +1,9 @@
 package lrucache
 
 import (
-	"leetcode-go/algorithms/146-lru-cache/lrucache"
 	"testing"
+
+	"github.com/nullsimon/leetcode-go/algorithms/146-lru-cache/lrucache"
 )
 
 func TestLruCache(t *testing.T) {
