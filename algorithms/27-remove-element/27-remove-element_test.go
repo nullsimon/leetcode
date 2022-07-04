@@ -18,7 +18,7 @@ func TestRemoveElement(t *testing.T) {
 		0,
 		1,
 	}
-	for i, _ := range input1 {
+	for i := range input1 {
 		got := removeElement(input1[i], input2[i])
 		if got != want[i] {
 			t.Fatalf(`removeElement function failed, want %d, got %d`, want[i], got)

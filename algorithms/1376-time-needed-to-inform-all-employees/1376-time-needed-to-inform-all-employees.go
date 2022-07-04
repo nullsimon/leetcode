@@ -59,7 +59,7 @@ func numOfMinutes_version2(n int, headID int, manager []int, informTime []int) i
 		var size = len(ch)
 		for i := 0; i < size; i++ {
 			cur := <-ch
-			for k, _ := range unvisitedManager {
+			for k := range unvisitedManager {
 
 				if unvisitedManager[k] == cur {
 					ch <- k
