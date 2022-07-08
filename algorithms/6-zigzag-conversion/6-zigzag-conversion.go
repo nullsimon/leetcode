@@ -43,3 +43,48 @@ func convert(s string, numRows int) string {
 	}
 	return res
 }
+
+// add slice version memery efficient and reduce time complex
+func convert2(s string, numRows int) string {
+	if numRows == 1 {
+		return s
+	}
+	var zigs = make([][]string, numRows)
+	y := 0
+	for i := 0; i < len(s); i++ {
+		v := string(s[i])
+		zigs[y] = append(zigs[y], v)
+		// y++
+		for y+1 < numRows && i+1 < len(s) {
+			y++
+			i++
+			if i == len(s) {
+				break
+			}
+			v = string(s[i])
+			zigs[y] = append(zigs[y], v)
+		}
+		for j := 0; j < numRows-1; j++ {
+			y--
+			i++
+			if i == len(s) {
+				break
+			}
+			v = string(s[i])
+			zigs[y] = append(zigs[y], v)
+		}
+		y++
+	}
+
+	var res = ""
+	for m := 0; m < numRows; m++ {
+		for n := 0; n < len(zigs[m]); n++ {
+			v := zigs[m][n]
+			if v != "" {
+				res += v
+			}
+		}
+	}
+	return res
+
+}

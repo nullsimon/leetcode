@@ -25,7 +25,7 @@ func TestConvert(t *testing.T) {
 		"A",
 	}
 	for i, v := range input {
-		if got := convert(v, input1[i]); got != want[i] {
+		if got := convert2(v, input1[i]); got != want[i] {
 			t.Errorf("convert(%v, %v) = %v; want %v", v, input1[i], got, want[i])
 		}
 	}
