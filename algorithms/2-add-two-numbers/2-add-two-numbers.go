@@ -97,14 +97,7 @@ func reverseList(l *ListNode) *ListNode {
 	return l
 }
 
-func reverseList2(l *ListNode) *ListNode {
-	if l == nil {
-		return nil
-	}
-
-}
-
-//toNumber wail be failed if the number beyond 2^64 limit,may be to slice and add them up
+// toNumber wail be failed if the number beyond 2^64 limit,may be to slice and add them up
 func toNumber(l *ListNode) int {
 	var nums int
 	var base = 1
