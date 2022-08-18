@@ -86,6 +86,24 @@ func reverse(l *ListNode) *ListNode {
 	return nl
 }
 
+func reverseList(l *ListNode) *ListNode {
+	if l == nil {
+		return nil
+	}
+	for l.Next != nil {
+		l.Val, l.Next.Val = l.Next.Val, l.Val
+		l = l.Next
+	}
+	return l
+}
+
+func reverseList2(l *ListNode) *ListNode {
+	if l == nil {
+		return nil
+	}
+
+}
+
 //toNumber wail be failed if the number beyond 2^64 limit,may be to slice and add them up
 func toNumber(l *ListNode) int {
 	var nums int
