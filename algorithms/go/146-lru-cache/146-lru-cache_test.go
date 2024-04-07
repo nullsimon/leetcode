@@ -3,7 +3,7 @@ package lrucache
 import (
 	"testing"
 
-	"github.com/nullsimon/leetcode-go/algorithms/146-lru-cache/lrucache"
+	"github.com/nullsimon/leetcode/algorithms/go/146-lru-cache/lrucache"
 )
 
 func TestLruCache(t *testing.T) {
