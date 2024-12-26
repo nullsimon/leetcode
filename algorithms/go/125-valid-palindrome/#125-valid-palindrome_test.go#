@@ -1,0 +1,28 @@
+package validpalindrome
+
+import "testing"
+func TestIsPalindrome(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected bool
+	}{
+		{
+			name:     "hello",
+			input:    "hih",
+			expected: true,
+		},
+		{
+			name:     "long with invalid charactor",
+			input:    "A man, a plan, a canal: Panama",
+			expected: true,
+		},
+	}
+
+	for _, test := range tests {
+		got := isPalindrome(test.input)
+		if got != test.expected {
+			t.Errorf("want: %v, got: %v", test.expected, got)
+		}
+	}
+}
