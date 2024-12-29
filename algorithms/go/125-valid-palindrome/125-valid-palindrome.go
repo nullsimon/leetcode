@@ -1,24 +1,22 @@
 package validpalindrome
 
 func isPalindrome(s string) bool {
-	trimmed := ""
+	list := []rune{}
 	for _, r := range s {
 		if r <= 'Z' && r >= 'A' {
-			trimmed = trimmed + string(r+32)
+			list = append(list, r+32)
 		} else if r <= 'z' && r >= 'a' {
-			trimmed = trimmed + string(r)
+			list = append(list, r)
 		} else if r <= '9' && r >= '0' {
-			trimmed = trimmed + string(r)
+			list = append(list, r)
 		}
 
 	}
-	reversed := ""
-	list := []rune{}
-	for _, r := range trimmed {
-		list = append(list, r)
+	for i := len(list) - 1; i > i/2; i-- {
+		if list[i-1] != list[len(list)-i] {
+			return false
+		}
 	}
-	for i := len(list) - 1; i >= 0; i-- {
-		reversed = reversed + string(list[i])
-	}
-	return trimmed == reversed
+	return true
+
 }
