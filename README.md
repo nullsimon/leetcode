@@ -7,7 +7,7 @@
 
 ## Leetcode Stats
 
-![Leetcode Stats](https://leetcode.card.workers.dev/?username=nullsimon&theme=auto)
+![Leetcode Stats](![ Stats](https://leetcode-status.vercel.app/api/card/nullsimon?theme=light&hide_title=true&custom_title=))
 
 ## Leetcode Profile
 
